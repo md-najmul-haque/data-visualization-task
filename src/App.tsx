@@ -1,24 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import ReactECharts from 'echarts-for-react';
+
 
 function App() {
+
+  fetch('Wine-data.json')
+    .then(res => res.json())
+    .then(data => console.log(data))
+
+  const options = {
+    grid: { top: 8, right: 18, bottom: 24, left: 50 },
+    xAxis: {
+      type: 'category',
+      data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+    },
+    yAxis: {
+      type: 'value',
+    },
+    series: [
+      {
+        data: [820, 932, 901, 934, 1290, 1330, 1320],
+        type: 'line',
+        smooth: true,
+      },
+    ],
+    tooltip: {
+      trigger: 'axis',
+    },
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h2>Data Visualization</h2>
+      <ReactECharts option={options} />;
     </div>
   );
 }

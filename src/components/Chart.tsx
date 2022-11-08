@@ -1,26 +1,19 @@
 import { useState } from 'react';
 import ReactECharts from 'echarts-for-react';
-
-type Product = {
-    Alcohol: number,
-    'Malic Acid': number,
-    Ash: number,
-    Alcalinity0fAsh: number,
-    'Color intensity': number,
-    Hue: number,
-}
+import { Product } from '../types/Chart.type';
 
 
 const Chart = () => {
 
     const [data, setData] = useState([])
 
+    // declare variable to store data from json file
     let colorIntensity: any = [];
     let hue: any = [];
     let alcohol: any = [];
     let malicAcid: any = []
 
-
+    // create async function to fetch data as a synchronous way 
     const fetchData = async () => {
         await fetch('Wine-data.json')
             .then(res => res.json())
@@ -29,7 +22,7 @@ const Chart = () => {
 
     fetchData()
 
-
+    // map data to store our required data in array
     data.map((product: Product) => {
         colorIntensity.push(product['Color intensity'])
         hue.push(product.Hue)
@@ -37,7 +30,8 @@ const Chart = () => {
         malicAcid.push(product['Malic Acid'])
     })
 
-    const option = {
+    // option for bar diagram
+    const bar = {
         title: {
             text: 'Bar Diagram'
         },
@@ -57,7 +51,7 @@ const Chart = () => {
     };
 
 
-
+    // option for scatter diagram
     const scatter = {
         title: {
             text: 'Scatter Diagram'
@@ -80,7 +74,7 @@ const Chart = () => {
     return (
         <div>
             <ReactECharts
-                option={option}
+                option={bar}
                 style={{ height: 400 }}
                 opts={{ renderer: 'svg' }}
             />;

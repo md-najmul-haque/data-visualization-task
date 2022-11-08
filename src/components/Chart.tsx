@@ -20,10 +20,6 @@ const Chart = () => {
     let alcohol: any = [];
     let malicAcid: any = []
 
-    console.log(alcohol)
-    console.log(malicAcid)
-    console.log(hue)
-    console.log(colorIntensity)
 
     const fetchData = async () => {
         await fetch('Wine-data.json')
@@ -35,7 +31,6 @@ const Chart = () => {
 
 
     data.map((product: Product) => {
-        // console.log(product)
         colorIntensity.push(product['Color intensity'])
         hue.push(product.Hue)
         alcohol.push(product.Alcohol)
@@ -63,26 +58,25 @@ const Chart = () => {
 
 
 
-    const option2 = {
+    const scatter = {
         title: {
             text: 'Scatter Diagram'
         },
         tooltip: {},
         legend: {
-            data: ['sales volume']
+            data: ['Color Intensity']
         },
         xAxis: {
             data: colorIntensity
         },
         yAxis: {},
         series: [{
-            name: 'Malic Acid',
+            name: 'Hue',
             type: 'scatter',
             data: hue
         }]
     };
 
-    console.log(option)
     return (
         <div>
             <ReactECharts
@@ -92,7 +86,7 @@ const Chart = () => {
             />;
 
             <ReactECharts
-                option={option2}
+                option={scatter}
                 style={{ height: 400 }}
                 opts={{ renderer: 'svg' }}
             />;

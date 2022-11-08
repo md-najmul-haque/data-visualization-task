@@ -5,7 +5,7 @@ function App() {
 
   return (
     <div className="App">
-      <h2>Data Visualization</h2>
+      <h1>Data Visualization</h1>
       <Chart />
     </div>
   );

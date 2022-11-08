@@ -37,7 +37,7 @@ const Chart = () => {
         },
         tooltip: {},
         legend: {
-            data: ['sales volume']
+            data: []
         },
         xAxis: {
             data: alcohol
@@ -58,7 +58,7 @@ const Chart = () => {
         },
         tooltip: {},
         legend: {
-            data: ['Color Intensity']
+            data: ['']
         },
         xAxis: {
             data: colorIntensity
@@ -79,11 +79,16 @@ const Chart = () => {
                 opts={{ renderer: 'svg' }}
             />;
 
+            <h4>Bar Diagram Alcohol vs Malic Acid</h4>
+            <br />
+
             <ReactECharts
                 option={scatter}
                 style={{ height: 400 }}
                 opts={{ renderer: 'svg' }}
-            />;
+            />
+            <h4>Scatter Diagram Color Intensity vs Hue</h4>
+
         </div>
     );
 };

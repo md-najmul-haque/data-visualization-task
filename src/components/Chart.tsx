@@ -8,10 +8,10 @@ const Chart = () => {
     const [data, setData] = useState([])
 
     // declare variable to store data from json file
-    let colorIntensity: any = [];
-    let hue: any = [];
-    let alcohol: any = [];
-    let malicAcid: any = []
+    let colorIntensity: number[] = [];
+    let hue: number[] = [];
+    let alcohol: number[] = [];
+    let malicAcid: number[] = []
 
     // create async function to fetch data as a synchronous way 
     const fetchData = async () => {
